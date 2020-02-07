@@ -1,0 +1,172 @@
+{% from "macros/passenger.njk" import passenger_form %}
+
+{% extends "base.njk" %}
+
+{% block page_styles %}
+  <link rel="stylesheet" href="./assets/css/pages/home.css">
+{% endblock %}
+
+{% block content %}
+<section class="section form">
+  <div class="content-padding">
+    <form class="form__content" id="tour-booking-form">
+      <h1>Tour Booking Form</h1>
+      <div class="form__content__row">
+        <label class="form__label form__label--col">
+          Tour Name:
+          <input class="form__content__row__input" id="tour-name" name="tour-name" type="text" />
+        </label>
+      </div>
+      <div class="form__content__row">
+        <label class="form__label form__label--col">
+          Tour Date:
+          <input class="form__content__row__input" id="tour-date" name="tour-date" type="date" />
+        </label>
+      </div>
+      <fieldset>
+        <legend>Passengers Information</legend>
+        <fieldset>
+          <legend>Number of Passengers</legend>
+          <div class="form__group">
+            <div>
+              <label class="form__label form__label--col">
+                Adult (12 years & above)
+                <input class="form__content__row__input" id="adults" name="adults" type="number" />
+              </label>
+            </div>
+            <div>
+              <label class="form__label form__label--col">
+                Child with bed (below 12 years)
+                <input class="form__content__row__input" id="child-bed" name="child-bed" type="number" />
+              </label>
+            </div>
+            <div>
+              <label class="form__label form__label--col">
+                Child no bed (below 6 years)
+                <input class="form__content__row__input" id="child-no-bed" name="child-no-bed" type="number" />
+              </label>
+            </div>
+            <div>
+              <label class="form__label form__label--col">
+                Infant (below 2 years)
+                <input class="form__content__row__input" id="infant" name="infant" type="number" />
+              </label>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Hotel Room Type</legend>
+          <div class="form__group">
+            <div>
+              <label class="form__label form__label--col">
+                Single
+                <input class="form__content__row__input" id="single-room" name="single-room" type="number" />
+              </label>
+            </div>
+            <div>
+              <label class="form__label form__label--col">
+                Twin
+                <input class="form__content__row__input" id="twin-room" name="twin-room" type="number" />
+              </label>
+            </div>
+            <div>
+              <label class="form__label form__label--col">
+                Double
+                <input class="form__content__row__input" id="double-room" name="double-room" type="number" />
+              </label>
+            </div>
+            <div>
+              <label class="form__label form__label--col">
+                Triple
+                <input class="form__content__row__input" id="triple-room" name="triple-room" type="number" />
+              </label>
+            </div>
+          </div>
+        </fieldset>
+        <ul class="form__remarks--list" aria-label="Remarks:">
+          <li>Double rooms are either very limited or not available in some hotels/ryokan in Japan. Therefore, Twin room may be use in replacement for any Double room request</li>
+          <li>Different room types may not be located next to each other or even on the same floor</li>
+        </ul>
+        <ul class="form__group">
+          <li>
+            <label class="form__label">
+              <input
+                type="radio"
+                id="non-smoking"
+                name="smoking-room"
+                value="no"
+                checked>
+              Non-smoking room
+            </label>
+          </li>
+
+          <li>
+            <label class="form__label">
+              <input
+                type="radio"
+                id="smoking-room"
+                name="smoking-room"
+                value="yes">
+              Smoking room
+            </label>
+          </li>
+        </ul>
+      </fieldset>
+      <fieldset>
+        <legend>Payment Information</legend>
+        <p>
+          A deposit of either25% of the "Total Tour Price Payable" or S$1,000 per person (Whichever is higher) must be made in order to process the booking.
+        </p>
+        <p>
+          Deposit applies to land packages only, air fare will need to be paid separately in full
+        </p>
+        <ul class="form__group form__group--list" aria-label="Please select preferred payment mode:">
+          <li>
+            <label class="form__label">
+              <input
+                type="radio"
+                id="payment-cheque"
+                name="payment-mode"
+                value="cheque"
+                checked>
+              Cheque
+            </label>
+          </li>
+
+          <li>
+            <label class="form__label">
+              <input
+                type="radio"
+                id="payment-cc"
+                name="payment-mode"
+                value="credit-card">
+              Credit Card
+            </label>
+          </li>
+          <li>
+            <label class="form__label">
+              <input
+                type="radio"
+                id="payment-bt"
+                name="payment-mode"
+                value="bank-transfer">
+              Bank Transfer
+            </label>
+          </li>
+        </ul>
+      </fieldset>
+      {{passenger_form(0)}}
+      {{passenger_form(1)}}
+    </form>
+
+    <button type="button" class="form__add-btn" id="add-passenger-btn">ADD PASSENGER</button>
+  </div>
+</section>
+<template id="passenger-form-template">
+{{passenger_form(2)}}
+</template>
+{% endblock %}
+
+{% block page_script %}
+<script src="./assets/js/pages/home.js"></script>
+{% endblock %}

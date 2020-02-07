@@ -1,0 +1,94 @@
+@import '../utils/functions';
+@import '../utils/mixins';
+@import '../utils/vars';
+@import '../utils/colors';
+@import '../utils/type';
+
+.form {
+  margin-top: rem(40);
+
+  h1 {
+    margin-bottom: rem(24);
+
+    font-size: rem(48);
+  }
+
+  &__remarks {
+    &--list {
+      margin: rem(24) 0;
+
+      list-style: circle;
+
+      li {
+        margin-left: rem(24);
+      }
+    }
+
+    &--list:before {
+      content: attr(aria-label);
+    }
+  }
+
+  &__content__row {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    margin-bottom: rem(16);
+
+    label {
+      margin-bottom: rem(8);
+    }
+
+    &--section {
+      margin-top: rem(24);
+      box-sizing: border-box;
+
+      padding: rem(24);
+
+      border: rem(1) solid $color-light-gray;
+    }
+  }
+
+  &__group {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    &--list:before {
+      content: attr(aria-label);
+    }
+  }
+
+  &__label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &--col {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  &__add-btn,
+  &__remove-btn {
+    margin-top: rem(48);
+
+    padding: rem(8) rem(24);
+
+    background-color: $color-blue;
+    color: $color-white;
+  }
+
+  &__remove-btn {
+    background-color: $color-red;
+  }
+}

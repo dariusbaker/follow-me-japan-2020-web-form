@@ -1,0 +1,188 @@
+{# passenger index 0 means lead #}
+{% macro passenger_form(passenger_index = 0) %}
+  {% set input_prefix_id = 'lead-' %}
+  {% set form_title = 'Lead Passenger' %}
+  {% set removable = false %}
+
+  {% if passenger_index > 0 %}
+    {% set input_prefix_id = 'passenger-' ~ passenger_index %}
+    {% set form_title = (passenger_index + 1)|ordinal ~ ' Passenger' %}
+  {% endif %}
+
+  {% if passenger_index > 1 %}
+    {% set removable = true %}
+  {% endif %}
+
+  <fieldset class="form__passenger" data-removable={{removable}} id="{{input_prefix_id}}-passenger-fieldset">
+    <legend class="form__passenger__title">
+      {{form_title}}
+    </legend>
+    <div class="form__group">
+      <div class="form__content__row">
+        <label class="form__label form__label--col">
+          Salutation:
+          <select class="form__content__row__input" name="salutation[]">
+            <option value="mr">Mr.</option>
+            <option value="miss">Miss</option>
+            <option value="ms">Ms.</option>
+          </select>
+        </label>
+      </div>
+      <div class="form__content__row">
+        <label class="form__label form__label--col">
+          Family name:
+          <input class="form__content__row__input" name="family-name[]" type="text" />
+        </label>
+      </div>
+      <div class="form__content__row">
+        <label class="form__label form__label--col">
+          Given name:
+          <input class="form__content__row__input" name="given-name[]" type="text" />
+        </label>
+      </div>
+      <div class="form__content__row">
+        <label class="form__label form__label--col">
+          {% if passenger_index == 0 %}(Preferred to be addressed as):{% else %}Other name:{% endif %}
+          <input class="form__content__row__input" name="other-name[]" placeholder="e.g. John / Mary" type="text" />
+        </label>
+      </div>
+    </div>
+    <div class="form__group">
+      <div class="form__content__row">
+        <label class="form__label form__label--col">
+          Date of birth:
+          <input class="form__content__row__input" name="dob[]" type="date" />
+        </label>
+      </div>
+      <div class="form__content__row">
+        <label class="form__label form__label--col">
+          Passport no.:
+          <input class="form__content__row__input" name="passport-no[]" type="text" />
+        </label>
+      </div>
+      <div class="form__content__row">
+        <label class="form__label form__label--col">
+          Expiry date:
+          <input class="form__content__row__input" name="passport-expiry[]" type="date" />
+        </label>
+      </div>
+      <div class="form__content__row">
+        <label class="form__label form__label--col">
+          Nationality:
+          <input class="form__content__row__input" name="nationality[]" type="text" />
+        </label>
+      </div>
+    </div>
+    <div class="form__group">
+      <div class="form__content__row">
+        <label class="form__label form__label--col">
+          Contact no.:
+          <input class="form__content__row__input" name="contact-no[]" type="text" />
+        </label>
+      </div>
+      <div class="form__content__row">
+        <label class="form__label form__label--col">
+          Email address:
+          <input class="form__content__row__input" name="email[]" type="email" />
+        </label>
+      </div>
+      <div class="form__content__row">
+        <label class="form__label form__label--col">
+          2nd email address:
+          <input class="form__content__row__input" name="email-2[]" type="email" />
+        </label>
+      </div>
+      <div class="form__content__row">
+        <label class="form__label form__label--col">
+          Airlines' Membership No.:
+          <input class="form__content__row__input" name="airlines-member-no[]" type="text" />
+        </label>
+      </div>
+    </div>
+    <div class="form__group">
+      <div class="form__content__row">
+        <label class="form__label form__label--col">
+          Allergy (if any):
+          <textarea class="form__content__row__input" name="allergy[]">
+          </textarea>
+        </label>
+      </div>
+      <div class="form__content__row">
+        <label class="form__label form__label--col">
+          Medical Attention (if any):
+          <textarea class="form__content__row__input" name="medical[]">
+          </textarea>
+        </label>
+      </div>
+    </div>
+    <fieldset>
+      <legend>
+        Flights
+      </legend>
+      <ul class="form__group form__group--list" aria-label="Would you like for us to arrange the flights for you? ">
+        <li>
+          <label class="form__label">
+            <input
+              type="radio"
+              name="arrange-flight[]"
+              value="yes"
+              checked />
+            Yes
+          </label>
+        </li>
+
+        <li>
+          <label class="form__label">
+            <input
+              type="radio"
+              name="arrange-flight[]"
+              value="no" />
+            No
+          </label>
+        </li>
+      </ul>
+    </fieldset>
+    <fieldset>
+      <legend>
+        Mailing List
+      </legend>
+      <ul class="form__group form__group--list" aria-label="Would you like for us to add you into our mailing list? ">
+        <li>
+          <label class="form__label">
+            <input
+              type="radio"
+              name="mailing-list[]"
+              value="yes"
+              checked>
+            Yes
+          </label>
+        </li>
+
+        <li>
+          <label class="form__label">
+            <input
+              type="radio"
+              name="mailing-list[]"
+              value="no">
+            No
+          </label>
+        </li>
+      </ul>
+    </fieldset>
+    {% if passenger_index == 0 %}
+    <div>
+      <label class="form__label">
+        <input
+          type="checkbox"
+          id="{{input_prefix_id}}agree-term"
+          name="agree-term">
+        I confirm that I have read, understood and agreed to all the terms and conditions stated in FMJ's Booking Form for myself and the rest of my travelling party
+      </label>
+    </div>
+    {% endif %}
+
+    {% if removable %}
+      <button data-id="{{input_prefix_id}}-passenger-fieldset" type="button" class="form__remove-btn">REMOVE PASSENGER</button>
+    {% endif %}
+  </fieldset>
+{% endmacro %}

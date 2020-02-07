@@ -1,0 +1,37 @@
+html, body {
+  font-family: $font-family;
+  font-style: $font-style-normal;
+  font-size: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+input,
+select,
+textarea {
+  max-width: rem(240);
+  height: rem(40);
+
+  box-sizing: border-box;
+
+  padding: rem(8);
+
+  border: rem(1) solid $color-light-gray;
+  border-radius: rem(4);
+}
+
+button {
+  border: none;
+  border-radius: rem(4);
+}
+
+textarea {
+  resize: none;
+}
+
+label {
+  margin-right: rem(8);
+}
+
+fieldset + fieldset {
+  margin-top: rem(24);
+}

@@ -1,0 +1,39 @@
+
+{% set app_title='follow-me-japan-2020-web-form' %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="{{app_title}}">
+    <meta name="viewport" content="initial-scale=1, minimum-scale=1, width=device-width">
+    <meta name="referrer" content="no-referrer" />
+
+    <meta name="application-name" content="{{app_title}}">
+
+    {% block meta_tag %}
+    <title>{{app_title}}</title>
+    {% endblock %}
+
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/index.css">
+
+
+    {% block page_styles %}
+    {% endblock %}
+  </head>
+
+  <body class="not-ready">
+    <!-- START main -->
+    <main id="main" class="main">
+      {% block content %}
+      {% endblock %}
+    </main>
+    <!-- END main -->
+  </body>
+  <script src="./assets/js/index.js"></script>
+  {% block page_script %}
+  {% endblock %}
+</html>

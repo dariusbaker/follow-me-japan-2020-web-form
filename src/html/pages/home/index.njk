@@ -2,10 +2,6 @@
 
 {% extends "base.njk" %}
 
-{% block page_styles %}
-  <link rel="stylesheet" href="./assets/css/pages/home.css">
-{% endblock %}
-
 {% block content %}
 <section class="section form">
   <div class="content-padding">
@@ -165,8 +161,4 @@
 <template id="passenger-form-template">
 {{passenger_form(2)}}
 </template>
-{% endblock %}
-
-{% block page_script %}
-<script src="./assets/js/pages/home.js"></script>
 {% endblock %}
